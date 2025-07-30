@@ -1,6 +1,6 @@
 import { Moon, Sun, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LanguageDropdown } from "./LanguageDropdown";
+
 import { useTheme } from "next-themes";
 
 interface HeaderProps {
@@ -32,8 +32,6 @@ export const Header = ({ onMenuToggle }: HeaderProps) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <LanguageDropdown />
-          
           <Button
             variant="ghost"
             size="icon"

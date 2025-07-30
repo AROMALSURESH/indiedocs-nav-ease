@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { TypingAnimation } from "./TypingAnimation";
+import { LanguageDropdown } from "./LanguageDropdown";
 
 interface Message {
   id: string;
@@ -105,17 +106,24 @@ export const ChatInterface = () => {
                     : "bg-card"
                 }`}
               >
-                <div className="flex items-start gap-2">
-                  <p className="text-sm leading-relaxed">{message.content}</p>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <p className="text-sm leading-relaxed">{message.content}</p>
+                    {message.type === "ai" && (
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6 flex-shrink-0"
+                        onClick={() => handleSpeak(message.content)}
+                      >
+                        <Volume2 className="h-3 w-3" />
+                      </Button>
+                    )}
+                  </div>
                   {message.type === "ai" && (
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6 flex-shrink-0"
-                      onClick={() => handleSpeak(message.content)}
-                    >
-                      <Volume2 className="h-3 w-3" />
-                    </Button>
+                    <div className="flex justify-start">
+                      <LanguageDropdown />
+                    </div>
                   )}
                 </div>
               </Card>
